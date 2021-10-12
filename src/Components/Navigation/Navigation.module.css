@@ -1,0 +1,9 @@
+.link {
+  margin: 30px;
+  font-size: large;
+  color: blue;
+  font-weight: 500;
+}
+.activeLink {
+  color: red;
+}
