@@ -1,7 +1,8 @@
-import { Route } from 'react-router';
+import { Switch, Route } from 'react-router';
 import './App.css';
 import Navigation from './Components/Navigation/Navigation';
 import HomePage from './Components/Pages/HomePage/HomePage';
+import MoviesPage from './Components/Pages/MoviesPage/MoviesPage';
 
 function App() {
   return (
@@ -9,9 +10,17 @@ function App() {
       <header>
         <Navigation />
       </header>
-      <Route exact path="/">
-        <HomePage />
-      </Route>
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route>
+          <MoviesPage />
+        </Route>
+        <Route>
+          <NotFound />
+        </Route>
+      </Switch>
     </div>
   );
 }
