@@ -4,6 +4,7 @@ import Navigation from './Components/Navigation/Navigation';
 import HomePage from './Components/Pages/HomePage/HomePage';
 import MoviesPage from './Components/Pages/MoviesPage/MoviesPage';
 import NotFound from './Components/Pages/NotFound/NotFound';
+import MovieDetailsPage from './Components/Pages/MoviesPage/MovieDetailsPage/MovieDetailsPage';
 
 function App() {
   return (
@@ -15,8 +16,11 @@ function App() {
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route>
+        <Route exact path="/movies">
           <MoviesPage />
+        </Route>
+        <Route path="/movies/:filmId">
+          <MovieDetailsPage />
         </Route>
         <Route>
           <NotFound />

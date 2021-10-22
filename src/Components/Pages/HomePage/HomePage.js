@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import api from '../../../services/fetchMovies';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 export default function HomePage() {
   const [filmList, setFilmList] = useState([]);
-
+  const { url } = useRouteMatch();
   useEffect(() => {
     console.log('effext');
     if (filmList !== []) {
@@ -20,9 +21,21 @@ export default function HomePage() {
       <ul>
         {filmList.map(item => {
           if (item.name !== undefined) {
-            return <li key={item.id}>{item.name}</li>;
+            return (
+              <li key={item.id}>
+                <Link to={`${url}/${item.id}`}>
+                  {item.name}
+                </Link>
+              </li>
+            );
           } else {
-            return <li key={item.id}>{item.title}</li>;
+            return (
+              <li key={item.id}>
+                <Link to={`/movies/${item.id}`}>
+                  {item.title}
+                </Link>
+              </li>
+            );
           }
         })}
       </ul>
