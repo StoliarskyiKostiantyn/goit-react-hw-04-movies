@@ -1,11 +1,10 @@
 import { useParams } from 'react-router';
-export default function Cast() {
+export default function Review() {
   const { filmId } = useParams();
   return (
     <>
-      <h1>cast</h1>
+      <h1>Review</h1>
       <h1>{filmId}</h1>
-      <ul></ul>
     </>
   );
 }
