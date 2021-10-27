@@ -23,10 +23,28 @@ async function fetchMovieById(filmId) {
     ? await response.json()
     : Promise.reject(new Error(`Нет такого фильма`));
 }
+async function fetchCast(filmId) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${filmId}/credits?api_key=${API_KEY}`,
+  );
+  return response.ok
+    ? await response.json()
+    : Promise.reject(new Error(`Нет такого фильма`));
+}
+async function fetchReview(filmId) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${filmId}/reviews?api_key=${API_KEY}`,
+  );
+  return response.ok
+    ? await response.json()
+    : Promise.reject(new Error(`Нет такого фильма`));
+}
 const api = {
   fetchMovie,
+  fetchCast,
   fetchMovieByName,
   fetchMovieById,
+  fetchReview,
 };
 
 export default api;

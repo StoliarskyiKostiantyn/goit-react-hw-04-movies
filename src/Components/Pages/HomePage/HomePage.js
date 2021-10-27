@@ -6,12 +6,10 @@ export default function HomePage() {
   const [filmList, setFilmList] = useState([]);
   const { url } = useRouteMatch();
   useEffect(() => {
-    console.log('effext');
     if (filmList !== []) {
       api
         .fetchMovie()
         .then(data => setFilmList(data.results));
-      console.log(filmList);
     }
   }, []);
 
