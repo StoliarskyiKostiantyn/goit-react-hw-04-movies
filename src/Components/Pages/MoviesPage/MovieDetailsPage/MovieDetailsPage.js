@@ -1,13 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useParams, useHistory } from 'react-router';
 import api from '../../../../services/fetchMovies';
-import {
-  Link,
-  Route,
-  useRouteMatch,
-} from 'react-router-dom';
-import Cast from '../Cast/Cast';
-import Review from '../Review/Review';
+import { Link, Route, useRouteMatch } from 'react-router-dom';
+
+const Cast = lazy(() => import('../Cast/Cast'));
+const Review = lazy(() => import('../Review/Review'));
+
 export default function MovieDetailsPage() {
   const { filmId } = useParams();
   const [film, setFilm] = useState(null);
@@ -37,12 +35,15 @@ export default function MovieDetailsPage() {
       <Link to={`${url}/cast`}>Cast</Link>
       <br />
       <Link to={`${url}/review`}>Review</Link>
-      <Route path="/movies/:filmId/cast">
-        <Cast filmId={filmId} />
-      </Route>
-      <Route path="/movies/:filmId/review">
-        <Review filmId={filmId} />
-      </Route>
+
+      <Suspense fallback={<h1>Additional loading...</h1>}>
+        <Route path="/movies/:filmId/cast">
+          <Cast filmId={filmId} />
+        </Route>
+        <Route path="/movies/:filmId/review">
+          <Review filmId={filmId} />
+        </Route>
+      </Suspense>
     </>
   );
 }
