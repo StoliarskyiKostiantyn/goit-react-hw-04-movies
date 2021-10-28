@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/Components/Navigation/Navigation.module.css"],"names":[],"mappings":"AAAA,wBACE,WAAY,CACZ,eAAgB,CAChB,UAAW,CACX,eACF,CACA,8BACE,SACF","file":"Navigation.9983a241.chunk.css","sourcesContent":[".link {\r\n  margin: 30px;\r\n  font-size: large;\r\n  color: blue;\r\n  font-weight: 500;\r\n}\r\n.activeLink {\r\n  color: red;\r\n}\r\n"]}
